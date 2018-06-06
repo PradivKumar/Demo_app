@@ -7,7 +7,7 @@ class SitelayoutTest < ActionDispatch::IntegrationTest
 
   test "layout_links" do
   	get index_path
-  	assert_select "a[href=?]", index_path
+  	assert_select "a[href=?]", index_path, count: 2
   end
 
 end

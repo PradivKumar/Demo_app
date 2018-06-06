@@ -4,5 +4,8 @@ root 'users#index'
 get '/index', to: 'users#index'
 get '/signup', to: 'users#new'
 get '/show', to: 'users#show'
+get 'login', to: 'sessions#new'
+post 'login', to: 'sessions#create'
+delete 'logout', to: 'sessions#destroy'
 resources :users
 end

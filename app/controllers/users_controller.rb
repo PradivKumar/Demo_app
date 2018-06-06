@@ -9,8 +9,8 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(allowed_params)
 		if @user.save
-			 flash[:success] = "Signed up Successfully!"
-			redirect_to @user
+			flash[:success] = "Signed up Successfully!"
+			redirect_to index_path
 			
 		else
 			
