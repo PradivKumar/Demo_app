@@ -5,14 +5,32 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   #   assert true
   # end
 
-  test "check_login" do
+  def setup
+  	@user = users(:example)
+  end
+
+  test "invalid_login" do
+  		get login_path
+  		assert_template 'sessions/new'
+  		post login_path, params: { session: { mob: "4561237",
+  												password: "sgs"
+  		}}
+  		assert_not flash.empty?
+  end
+
+  test "valid_login" do
   	get login_path
   	assert_template 'sessions/new'
-  	post login_path, params: {session: {mob: "",
-  										password: ""}}
-  	assert_template 'sessions/new'
-  	assert_not flash.empty?
-  	
+  	post login_path, params: { session: { mob: "8056180462",
+  												password: 'prad2345'}}
+    #assert_redirected_to 'users/show' 
+    #follow_redirect!
+    #assert_template 'users/show'
+     # assert_select 'a[href]=?', login_path, count: 0
+      #  assert_select 'a[href]=?', edit_user_path
+    #assert_select 'a[href]=?', logout_path
+  
 
   end
+
 end

@@ -1,0 +1,10 @@
+<html>
+<br><br>
+<h1><center>Edit details</center></h1>
+<%provide(:button_text, "Update account")%>
+<%=render 'layouts/form_template'%>
+ <div class="gravatar_edit">
+      <%= gravatar_for @user %>
+      <a href="http://gravatar.com/emails" target="_blank">Change</a>
+    </div>
+</html>

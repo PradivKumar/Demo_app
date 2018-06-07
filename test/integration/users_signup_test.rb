@@ -5,7 +5,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   #   assert true
   # end
 
-  test "signup test" do
+  test "signup_invalid_test" do
   	get signup_path
   	assert_no_difference 'User.count' do
   		post users_path, params: {user: {name: "",
@@ -27,6 +27,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   									password_confirmation: "userpass"}}
   	end
   	#assert_template 'users/index'
+    assert is_logged_in?
 
   end
 
