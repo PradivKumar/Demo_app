@@ -1,0 +1,12 @@
+<%@posts.each do |p|%>
+<li>
+	
+	<%=p.content%><br>
+	<%#=p.user_id%>
+	<%u=User.find_by(id: p.user_id)%>
+	<%=u.name%><br>
+	Posted <%=time_ago_in_words(p.created_at)%> ago<br>
+</li>
+
+<%end%>
+<%=will_paginate @posts%>

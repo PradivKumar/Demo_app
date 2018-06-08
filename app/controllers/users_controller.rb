@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
 
-	before_action :logged_in_user, only: [:edit, :update , :show]
+	before_action :logged_in_user, only: [:edit, :update, :show]
 
 	def index
-
-	
-
+if logged_in?
+	@posts = Post.paginate(page: params[:page], per_page: 3)
+	@post = current_user.posts.build 
+end
 	end
 
 	def front
@@ -31,6 +32,7 @@ end
 
 	def show
 		@user = User.find(params[:id]) 
+		@posts = @user.posts.paginate(page: params[:page], per_page: 3)
 
 	end
 
