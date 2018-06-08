@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-	has_many :posts, dependent: :destroy
+	has_many :posts, dependent: :destroy 
 	attr_accessor :remember_token
 	validates :name, presence: true
 	validates :mob, presence: true, numericality: true, length: { is: 10}, uniqueness: true
