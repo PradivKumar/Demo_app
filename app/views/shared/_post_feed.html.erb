@@ -1,14 +1,7 @@
-
-<%@posts.each do |p|%>
-<li>
-	
-	<%=p.content%><br>
-	<%#=p.user_id%>
-	<%u=User.find_by(id: p.user_id)%>
-	<%=u.name%><br>
-	<%=image_tag p.picture.url if p.picture?%><br>
-	Posted <%=time_ago_in_words(p.created_at)%> ago<br>
-</li>
-
+<%if @feed_items.any?%>
+<ol>
+<%=render @feed_items%>
+</ol>
+<%=will_paginate @feed_items%>
 <%end%>
-<%=will_paginate @posts%>
+<%#=will_paginate @posts%>

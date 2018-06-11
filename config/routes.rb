@@ -10,4 +10,10 @@ post '/login', to: 'sessions#create'
 delete '/logout', to: 'sessions#destroy'
 resources :users
 resources :posts, only: [:create, :destroy]
+resources :users do
+	member do
+		get :following, :followers
+	end
+end
+resources :relationships, only: [:create, :destroy]
 end

@@ -22,7 +22,6 @@ module SessionsHelper
   end
 	end
 
-
 	def forget(user)
 		user.forget
 		cookies.delete(:user_id)
@@ -36,4 +35,11 @@ module SessionsHelper
     session.delete(:user_id)
     @current_user = nil
   end
+
+  def logged_in_user
+		if !logged_in?
+			flash[:danger] = "Please Login!"
+			redirect_to login_path
+		end	
+	end
 end

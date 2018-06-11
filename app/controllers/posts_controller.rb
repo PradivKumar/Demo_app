@@ -8,6 +8,7 @@ class PostsController < ApplicationController
 			flash[:success] = "Successfully posted!"
 			redirect_to root_url
 		else
+			@feed_items = []
 			render 'users/index'
 		end
 	end
@@ -22,12 +23,7 @@ class PostsController < ApplicationController
 	def post_params
 		params.require(:post).permit(:content, :picture)
 	end
-def logged_in_user
-		if !logged_in?
-			flash[:danger] = "Please Login!"
-			redirect_to login_path
-		end	
-	end
+
 	def correct_user
 		@post = current_user.posts.find_by(id: params[:id])
 		redirect_to root_url if @post.nil?

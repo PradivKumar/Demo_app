@@ -1,0 +1,10 @@
+
+<%@user ||= current_user%>
+<div class="col-md-4">
+Following<br>
+<%=@user.following.count%> 
+</div>
+<div class="cd-md-8">
+	Followers<br>
+<%=@user.followers.count%>
+</div><br><br>
