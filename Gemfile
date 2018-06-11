@@ -40,6 +40,8 @@ gem 'bcrypt'
 gem 'rails-controller-testing'
 gem 'will_paginate',           '3.1.6'
 gem 'bootstrap-will_paginate', '1.0.0'
+gem 'carrierwave',             '1.2.2'
+gem 'mini_magick',             '4.7.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -61,6 +63,11 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+end
+
+group :production do
+  #gem 'pg',  '0.20.0'
+  gem 'fog', '1.42'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

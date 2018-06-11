@@ -62,7 +62,7 @@ end
 
 	def logged_in_user
 		if !logged_in?
-			flash[:danger] = "Please Login!"
+			flash.now[:danger] = "Please Login!"
 			redirect_to login_path
 		end	
 	end

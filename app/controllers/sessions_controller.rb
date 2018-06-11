@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
 			remember user
 			redirect_to user
 		else
-			flash[:danger] = "Mobile no or password invalid"
+			flas.now[:danger] = "Mobile no or password invalid"
 			render 'new'
 		end
 

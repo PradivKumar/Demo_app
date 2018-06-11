@@ -20,7 +20,7 @@ class PostsController < ApplicationController
 
 	private
 	def post_params
-		params.require(:post).permit(:content)
+		params.require(:post).permit(:content, :picture)
 	end
 def logged_in_user
 		if !logged_in?

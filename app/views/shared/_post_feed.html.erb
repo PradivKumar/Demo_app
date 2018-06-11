@@ -6,6 +6,7 @@
 	<%#=p.user_id%>
 	<%u=User.find_by(id: p.user_id)%>
 	<%=u.name%><br>
+	<%=image_tag p.picture.url if p.picture?%><br>
 	Posted <%=time_ago_in_words(p.created_at)%> ago<br>
 </li>
 
