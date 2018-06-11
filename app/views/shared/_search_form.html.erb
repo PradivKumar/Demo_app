@@ -1,0 +1,6 @@
+<div class = "col-md-3">
+<%=form_tag(front_path, method: :get) do%>
+	<%=text_field_tag :name, params[:name]%><br>
+	<%=submit_tag "Search",name: nil, class: "btn btn-primary"%>
+<%end%>
+</div>

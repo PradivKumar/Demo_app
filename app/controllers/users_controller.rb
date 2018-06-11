@@ -4,14 +4,20 @@ class UsersController < ApplicationController
 
 	def index
 if logged_in?
-	
     @feed_items = current_user.feed.paginate(page: params[:page], per_page: 3)
 	@post = current_user.posts.build 
 end
+	
 	end
 
+
 	def front
-			@users = User.paginate(page: params[:page], per_page: 2)
+		if params[:name]
+		@users = User.where('name LIKE ?', "%#{params[:name]}%").paginate(page: params[:page], per_page: 5) 
+	else
+		@users = User.paginate(page: params[:page], per_page: 5)
+	end
+		#	@users = User.paginate(page: params[:page], per_page: 2)
 	end
 
 	def new
@@ -31,6 +37,9 @@ end
 	end
 end
 
+	def search
+		@users = User.all
+	end
 	def show
 		@user = User.find(params[:id]) 
 		@posts = @user.posts.paginate(page: params[:page], per_page: 3)

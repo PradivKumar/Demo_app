@@ -31,6 +31,7 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?other_user
   end
+     
 
   def remember
   	self.remember_token = User.newtoken
