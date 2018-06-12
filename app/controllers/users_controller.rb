@@ -43,8 +43,13 @@ end
 	def show
 		@user = User.find(params[:id]) 
 		@posts = @user.posts.paginate(page: params[:page], per_page: 3)
-
+		#@users = current_user.following.where(dob: Date.current) 
 	end
+
+	def notification
+		@users = current_user.following.where(dob: Date.current) 
+	end
+
 
 	def edit
 		@user = User.find(params[:id])
@@ -67,7 +72,7 @@ end
 
 	private
 	def allowed_params
-		params.require(:user).permit(:name, :mob, :password, :password_confirmation)
+		params.require(:user).permit(:name, :mob, :dob, :password, :password_confirmation)
 	end
 
 	def logged_in_user

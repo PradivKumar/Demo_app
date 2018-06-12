@@ -1,15 +1,21 @@
+<br><br>
 <h1>Users</h1>
 
-
+<div class="row">
+<aside class="col-md-4">
+<section>
 <%=render 'shared/search_form'%>
-<div class="col-md-6"
+</section>
+</aside>
+<section class="search_result">
+<div class="col-md-5">
 <%= will_paginate %>
 <ul class="users">
   <% @users.each do |user| %>
-   
      <%=render user%>
-    
   <% end %>
 </ul>
 <%= will_paginate %>
+</div>
+</section>
 </div>
