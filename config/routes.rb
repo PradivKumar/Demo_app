@@ -16,4 +16,5 @@ resources :users do
 	end
 end
 resources :relationships, only: [:create, :destroy]
+resources :likes, only: [:create, :destroy]
 end
