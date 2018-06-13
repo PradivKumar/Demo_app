@@ -13,6 +13,15 @@ section {
 textarea {
   resize: vertical;
 }
+.post_time{
+  color: gray;
+}
+
+.post_content, .post_time{
+  display: inline;
+}
+
+
 
 .center {
   text-align: center;

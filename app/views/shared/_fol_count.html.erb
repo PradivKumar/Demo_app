@@ -1,10 +1,13 @@
 
 <%@user ||= current_user%>
 <div class="col-md-4">
-Following<br>
+<%=link_to "Following", following_user_path(current_user) %><br>
 <%=@user.following.count%> 
 </div>
 <div class="cd-md-8">
-	Followers<br>
+	
+	<%=link_to "Followers", followers_user_path(current_user) %><br>
+	<div id="fol_count">
 <%=@user.followers.count%>
+</div>
 </div><br><br>

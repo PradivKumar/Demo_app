@@ -1,0 +1,22 @@
+<%#check = current_user != @current_post.user%>
+	<div id="like_form">
+		<%#if @current_post.not_liked?(current_user)%>
+		<%if @current_post.votes_for.where(voter_id: current_user.id, vote_flag: 1).empty?%>
+			<%=render 'users/like' %>
+		<%else%>
+			<%provide(:icon,"up.jpg")%>
+			<%=render 'users/remove'%>
+		<%end%>		
+			<%=@current_post.get_upvotes.size%> 
+		<%if @current_post.votes_for.where(voter_id: current_user.id, vote_flag: 0).empty?%>
+			<%=render 'users/unlike'%>
+		<%else%>	
+		<%provide(:icon,"down.jpg")%>
+			<%=render 'users/remove'%>
+		<%end%>	
+			<%=@current_post.get_downvotes.size%>
+		<%#end%>
+		
+		
+</div>	
+	

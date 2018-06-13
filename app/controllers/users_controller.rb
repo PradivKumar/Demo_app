@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 if logged_in?
     @feed_items = current_user.feed.paginate(page: params[:page], per_page: 3)
 	@post = current_user.posts.build 
+	#@current_post = Post.find(params[:id])
 end
 	
 	end
@@ -43,8 +44,24 @@ end
 	def show
 		@user = User.find(params[:id]) 
 		@posts = @user.posts.paginate(page: params[:page], per_page: 3)
+		@post = current_user.posts.build 
+			@follow = current_user.followers
 		#@users = current_user.following.where(dob: Date.current) 
 	end
+
+	def following
+    @title = "Following"
+    @user  = User.find(params[:id])
+    @users = @user.following.paginate(page: params[:page])
+    render 'fol_show'
+  end
+
+  def followers
+    @title = "Followers"
+    @user  = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'fol_show'
+  end
 
 	def notification
 		@users = current_user.following.where(dob: Date.current) 

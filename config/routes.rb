@@ -14,6 +14,15 @@ resources :users do
 		get :following, :followers
 	end
 end
+
+resources :posts do
+	member do
+		post :up, :down
+		delete :undo
+	end
+end
+
+
 get "/notification", to: 'users#notification'
 resources :relationships, only: [:create, :destroy]
 resources :likes, only: [:create, :destroy]

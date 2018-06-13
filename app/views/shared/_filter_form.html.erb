@@ -1,0 +1,3 @@
+<%=form_tag(index_path, method: :get) do%>
+	<%=collection_select :followers, current_user.followers , :id, :name, multiple: true%>
+<%end%>

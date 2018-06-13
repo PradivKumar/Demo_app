@@ -3,8 +3,8 @@
 <%=link_to post.user.name, post.user%><br>
 <%=post.content%><br>
 <%=image_tag post.picture.url if post.picture? %><br>
-Posted <%=time_ago_in_words(post.created_at)%> ago
+Posted <%=time_ago_in_words(post.created_at)%> ago 
 <%if current_user == post.user%>
-	<%=link_to "Delete", post, method: :delete, data: {confirm: "Sure?"}%>
+	| <%=link_to "Delete", post, method: :delete, data: {confirm: "Sure?"}%>
 <%end%>
 </li>

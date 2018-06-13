@@ -16,7 +16,26 @@ class PostsController < ApplicationController
 	def destroy
 		@post.destroy
 		flash[:success] = "Post deleted!"
-		redirect_to root_url
+		redirect_to current_user
+	end
+
+	def up
+		@post = Post.find(params[:id])
+		@post.upvote_from current_user
+		redirect_to index_path
+	end
+
+	def down
+		@post = Post.find(params[:id])
+		@post.downvote_from current_user
+		redirect_to index_path
+	end
+
+	def undo
+		@post = Post.find(params[:id])
+		@vote = @post.votes_for.find_by(voter_id: current_user.id)
+		@vote.destroy
+		redirect_to index_path
 	end
 
 	private

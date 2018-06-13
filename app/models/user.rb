@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed  
   has_many :followers, through: :passive_relationships, source: :follower
 	attr_accessor :remember_token 
+  acts_as_voter
 	validates :name, presence: true
 	validates :mob, presence: true, numericality: true, length: { is: 10}, uniqueness: true
 	has_secure_password

@@ -3,23 +3,15 @@
 <%#=render @feed_items%>
 <%@feed_items.each do |fi|%>
 <li>
-	<%=link_to fi.user.name, fi.user%><br>
-	<%=fi.content%><br>
-	<%=image_tag fi.picture.url if fi.picture? %><br>
-	Posted <%=time_ago_in_words(fi.created_at)%> ago<br>
-	<%if current_user != fi.user%>
-		<%if fi.not_liked?(current_user)%>
-			<%=form_for(fi.likes.build) do |f|%>
-			<%=hidden_field_tag :post_id, fi.id%>
-			<div class= "col-md-2"><%=f.submit "Like", class: "btn btn-primary"%></div>
-			<%end%>
-		<%else%>
-			<%=form_for(fi.likes.find_by(user_id: current_user.id), html: {method: :delete}) do |f|%>
-			<div class= "col-md-2"><%=f.submit "Unlike", class: "btn"%></div><%end%>
-		<%end%>
-
-	<%end%>
-	Likes: <%=fi.likes.count%>  <br><br>
+	<%@current_post = fi%>
+	<%=link_to fi.user.name, fi.user%> <br>
+	<div class="post_content"><%=fi.content%> | </div> 
+	<div class="post_time">Posted <%=time_ago_in_words(fi.created_at)%> ago</div>
+	<div><%=image_tag fi.picture.url if fi.picture? %></div>
+	<div class="likes">
+	<%=render 'shared/like_form'%></div>
+	<%#=render 'users/like_count'%>
+	 
 </li>
 <%end%>
 </ol>
