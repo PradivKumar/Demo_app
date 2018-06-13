@@ -12,11 +12,13 @@ resources :posts, only: [:create, :destroy]
 resources :users do
 	member do
 		get :following, :followers
+		get :liked, :disliked
 	end
 end
 
 resources :posts do
 	member do
+		
 		post :up, :down
 		delete :undo
 	end

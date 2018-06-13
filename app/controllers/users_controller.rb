@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 if logged_in?
     @feed_items = current_user.feed.paginate(page: params[:page], per_page: 3)
 	@post = current_user.posts.build 
+	
 	#@current_post = Post.find(params[:id])
 end
 	
@@ -47,6 +48,20 @@ end
 		@post = current_user.posts.build 
 			@follow = current_user.followers
 		#@users = current_user.following.where(dob: Date.current) 
+	end
+
+	def liked
+		@title = "Liked Posts"
+		@user = User.find(params[:id]) 
+		@posts = @user.votes.where(vote_flag: 1).paginate(page: params[:page], per_page: 3)
+		render 'posts_show'
+	end
+
+	def disliked
+		@title = "Disliked Posts"
+		@user = User.find(params[:id]) 
+		@posts = @user.votes.where(vote_flag: 0).paginate(page: params[:page], per_page: 3)
+		render 'posts_show'
 	end
 
 	def following

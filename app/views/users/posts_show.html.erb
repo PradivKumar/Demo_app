@@ -1,0 +1,17 @@
+ <div class="col-md-8">
+    <h3><%=@title%> (<%= @posts.count%>)</h3>
+
+    <% if @posts.any? %>
+      <ul class="posts">
+   	<%@posts.each do |p|%> <li>  
+      		<%post = Post.find(p.votable_id)%>
+      		<%=link_to post.user.name, post.user%><br>
+      		<%=post.content%><br>
+      		<%=image_tag post.picture.url if post.picture?%><br>
+      		Posted <%=time_ago_in_words(post.created_at)%> ago </li>
+
+      	<%end%>
+      </ul>
+      <%= will_paginate @posts%>
+    <% end %>
+  </div>
