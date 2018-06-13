@@ -1,10 +1,15 @@
 <li>
 <%#=link_to gravatar_for(post.user), post.user%>
+<%@current_post = post%>
 <%=link_to post.user.name, post.user%><br>
-<%=post.content%><br>
-<%=image_tag post.picture.url if post.picture? %><br>
-Posted <%=time_ago_in_words(post.created_at)%> ago 
+<div class="post_content"><%=post.content%></div> | 
+<div class="post_time">Posted <%=time_ago_in_words(post.created_at)%> ago</div> 
+<div><%=image_tag post.picture.url if post.picture? %></div>
+
 <%if current_user == post.user%>
-	| <%=link_to "Delete", post, method: :delete, data: {confirm: "Sure?"}%>
+<%=link_to "Delete", post, method: :delete, data: {confirm: "Sure?"}%>
+	
+<div class="likes"> <%=render 'shared/like_form'%></div>
 <%end%>
+
 </li>

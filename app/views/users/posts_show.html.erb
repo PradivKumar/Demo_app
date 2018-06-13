@@ -3,14 +3,19 @@
 
     <% if @posts.any? %>
       <ul class="posts">
-   	<%@posts.each do |p|%> <li>  
+   	<%@posts.each do |p|%> <li>
+      <%@current_post = Post.find(p.votable_id)  %>
       		<%post = Post.find(p.votable_id)%>
       		<%=link_to post.user.name, post.user%><br>
-      		<%=post.content%><br>
-      		<%=image_tag post.picture.url if post.picture?%><br>
-      		Posted <%=time_ago_in_words(post.created_at)%> ago </li>
+      	<div class="post_content">	<%=post.content%> | </div>
+      	<div class="post_time">  Posted <%=time_ago_in_words(post.created_at)%> ago </div>
 
+        <div>	<%=image_tag post.picture.url if post.picture?%></div>      	
+
+<div class="likes">  <%=render 'shared/like_form'%></div>
       	<%end%>
+        </li>
+
       </ul>
       <%= will_paginate @posts%>
     <% end %>

@@ -12,6 +12,8 @@ class User < ApplicationRecord
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 6 } 
 
+ #privacy_opt = ['Following', 'Public', 'Private']
+
 	 def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
@@ -55,7 +57,7 @@ def feed
 
   following_ids = "SELECT followed_id FROM relationships
                      WHERE  follower_id = :user_id"
-    Post.where("user_id IN (#{following_ids})
-                     OR user_id = :user_id", user_id: id)
+    Post.where("((user_id IN (#{following_ids})
+                     OR user_id = :user_id) OR (privacy = 'Public'))", user_id: id)
 end
 end

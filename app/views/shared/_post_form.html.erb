@@ -1,8 +1,12 @@
+<%#privacy = ["Following", "Public", "Private"]%>
 <%=form_for(@post) do |f|%>
 <%=render 'shared/error_messages' , object: f.object%>
 	<%=f.label :content%>
 	<%=f.text_area :content%><br>
-
+	<%#= f.collection_select :privacy, :id, :name, include_blank: false%>
+	<%=f.label :privacy%>
+	<%=f.select :privacy, [['Following', "Following"], ['Public', "Public"], ['Private', "Private"]]%>
+	<%#= f.select(:privacy, Post::privacy_opt) %>
 	<%=f.file_field :picture%><br>
 	<%=f.submit "Post", class: "btn btn-primary"%>
 <%end%>

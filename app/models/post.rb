@@ -6,6 +6,7 @@ class Post < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
   mount_uploader :picture, PictureUploader
 acts_as_votable
+ 
 
   def not_liked?(user)
     likes.find_by(user_id: user.id).nil?

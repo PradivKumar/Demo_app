@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_13_073903) do
+ActiveRecord::Schema.define(version: 2018_06_13_175615) do
 
   create_table "likes", force: :cascade do |t|
     t.integer "post_id"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2018_06_13_073903) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "picture"
+    t.string "privacy"
     t.index ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
@@ -51,6 +52,7 @@ ActiveRecord::Schema.define(version: 2018_06_13_073903) do
     t.boolean "admin", default: false
     t.string "remember_digest"
     t.date "dob"
+    t.index ["dob"], name: "index_users_on_dob"
   end
 
   create_table "votes", force: :cascade do |t|
