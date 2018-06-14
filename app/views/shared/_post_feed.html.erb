@@ -1,3 +1,4 @@
+<%#@feed_items = @feed_items.where(!(privacy: "Private" && !(user_id: current_user.id))%>
 <%if @feed_items.any?%>
 <ol>	
 <%#=render @feed_items%>
@@ -5,7 +6,7 @@
 
 	<%unless fi.privacy == "Private" && fi.user != current_user %>
 <li><%@current_post = fi%>
-	<%=link_to fi.user.name, fi.user%> | <%=fi.privacy%><br>
+	<%=link_to fi.user.name, fi.user%> |<%= render 'shared/privacy_icon'%><br>
 	<div class="post_content"><%=fi.content%> | </div> 
 	<div class="post_time">Posted <%=time_ago_in_words(fi.created_at)%> ago</div>
 	<div><%=image_tag fi.picture.url if fi.picture? %></div>

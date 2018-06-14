@@ -1,0 +1,7 @@
+<%if @current_post.privacy == "Public"%>
+	<%=image_tag "public.png", width: 30, height: 30%>
+<%elsif @current_post.privacy == "Private"%>
+		<%=image_tag "private.png", width: 15, height: 15%>
+<%else%>
+		<%=image_tag "follow.png", width: 20, height: 15%>		
+	<%end%>

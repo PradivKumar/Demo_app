@@ -6,7 +6,7 @@
    	<%@posts.each do |p|%> <li>
       <%@current_post = Post.find(p.votable_id)  %>
       		<%post = Post.find(p.votable_id)%>
-      		<%=link_to post.user.name, post.user%><br>
+      		<%=link_to post.user.name, post.user%> |<%= render 'shared/privacy_icon'%><br>
       	<div class="post_content">	<%=post.content%> | </div>
       	<div class="post_time">  Posted <%=time_ago_in_words(post.created_at)%> ago </div>
 
