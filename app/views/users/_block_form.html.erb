@@ -1,0 +1,16 @@
+<%unless current_user == @user%>
+	<div id="block_form">
+		<%if current_user.not_blocking?(@user) && current_user.following?(@user)%>
+		<%=render 'users/block_update', block: 1%>
+		<%end%>
+		<%if current_user.not_blocking?(@user) && !current_user.following?(@user)%>
+		<%=render 'users/block_create', block: 2%><%end%>
+		<%if !current_user.not_blocking?(@user) && current_user.following?(@user)%>
+		<%=render 'users/unblock', block: 0%><%end%>
+		<%if !current_user.not_blocking?(@user) && !current_user.following?(@user)%>
+		<%=render 'users/remove_relation'%>
+
+<%end%>
+	</div>
+<%end%> 
+

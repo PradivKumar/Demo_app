@@ -1,0 +1,5 @@
+<% followed_user = current_user.active_relationships.find_by(followed_id: @user)%>
+<%=form_tag relationship_path(followed_user, block: block), method: :put do %>
+<div><%=hidden_field_tag :followed_id, @user.id%></div>
+	<%=submit_tag "Block", class: "btn btn-primary"%>
+<%end%>

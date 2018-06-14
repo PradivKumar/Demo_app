@@ -1,1 +1,2 @@
-<%=link_to image_tag('down.jpg', width: 30, height: 22), down_post_path(@current_post), method: :post%>
+<%flag = flag%>
+<%=link_to image_tag('down.jpg', width: 30, height: 22), down_post_path(@current_post, locals: {flag: flag}), method: :post%> 

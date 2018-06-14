@@ -26,6 +26,6 @@ end
 
 
 get "/notification", to: 'users#notification'
-resources :relationships, only: [:create, :destroy]
+resources :relationships, only: [:create, :destroy, :update]
 resources :likes, only: [:create, :destroy]
 end

@@ -33,10 +33,16 @@ class User < ApplicationRecord
   end
 
   def following?(other_user)
-    following.include?other_user
+    following.include?other_user && Relationship.where(followed: other_user, block: 2).empty? #&& Relationship.where(followed: other_user, block: 2).empty?
   end
      
+  def not_blocking?(other_user)
+    Relationship.where(followed: other_user, block: 1).empty? && Relationship.where(followed: other_user, block: 2).empty?
+  end
 
+  def not_blocked?(other_user)
+      Relationship.where(followed: other_user, block: 2).empty?
+  end
 
 
   def remember
@@ -56,8 +62,13 @@ class User < ApplicationRecord
 def feed
 
   following_ids = "SELECT followed_id FROM relationships
-                     WHERE  follower_id = :user_id"
+                     WHERE  (follower_id = :user_id AND block = '0')"
+ 
+  blocked_ids = "SELECT followed_id FROM relationships
+                     WHERE  (follower_id = :user_id AND (block = '1' OR block = '2'))"
+
     Post.where("((user_id IN (#{following_ids})
-                     OR user_id = :user_id) OR (privacy = 'Public'))", user_id: id)
+                     OR user_id = :user_id) OR ((privacy = 'Public') AND user_id NOT IN (#{blocked_ids})))", user_id: id)
+
 end
 end

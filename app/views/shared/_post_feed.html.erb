@@ -11,7 +11,7 @@
 	<div class="post_time">Posted <%=time_ago_in_words(fi.created_at)%> ago</div>
 	<div><%=image_tag fi.picture.url if fi.picture? %></div>
 	<div class="likes">
-	<%=render 'shared/like_form'%></div>
+	<%=render 'shared/like_form', locals: {flag: 0}%></div>
 	<%#=render 'users/like_count'%>
 	 <%end%>
 </li>
@@ -19,4 +19,4 @@
 </ol>
 <%=will_paginate @feed_items%>
 <%end%>
- 
+  

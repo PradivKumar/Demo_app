@@ -8,8 +8,7 @@
 
 <%if current_user == post.user%>
 <%=link_to "Delete", post, method: :delete, data: {confirm: "Sure?"}%>
-	
-<div class="likes"> <%=render 'shared/like_form'%></div>
-<%end%>
+<%end%>	
+<div class="likes"> <%=render 'shared/like_form', flag: 0 %></div>
 
 </li> 

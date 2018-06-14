@@ -16,9 +16,14 @@
    
   </aside>
  <div class= "col-md-8">
+  <div class ="followform">
  	<%=render 'follow_form' if logged_in?%>
+ </div>
+ <div class="blockform">
+    <%=render 'block_form' if logged_in?%>
+ </div>
  	<%if @user.posts.any?%>
- 	<%if @user.following?(current_user) || current_user == @user%>
+ 	<%if (@user.following?(current_user) || current_user.not_blocking?(@user)) || current_user == @user%>
   <h1> My Posts </h1>
 
  		<ol class="posts">

@@ -22,20 +22,33 @@ class PostsController < ApplicationController
 	def up
 		@post = Post.find(params[:id])
 		@post.upvote_from current_user
+		if params[:flag] == 1
 		redirect_to index_path
+	elsif  params[:flag] == 0
+		redirect_to post_path
+	end
 	end
 
 	def down
 		@post = Post.find(params[:id])
 		@post.downvote_from current_user
+		if params[:flag] == 1
 		redirect_to index_path
+	elsif  params[:flag] == 0
+		redirect_to post_path
+	end
+		
 	end
 
 	def undo
 		@post = Post.find(params[:id])
 		@vote = @post.votes_for.find_by(voter_id: current_user.id)
-		@vote.destroy
+		@vote.destroy unless @vote.nil?
+		if params[:flag] == 1
 		redirect_to index_path
+	elsif  params[:flag] == 0
+		redirect_to post_path
+	end
 	end
 
 	private
