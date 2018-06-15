@@ -7,7 +7,7 @@
   <%= gravatar_for @user %>
   <%= @user.name %> 
 
-  </h1>
+  </h1> 
     </section>
     <section class="stats">
     	<%=render 'shared/fol_count'%>
@@ -23,7 +23,7 @@
     <%=render 'block_form' if logged_in?%>
  </div>
  	<%if @user.posts.any?%>
- 	<%if (@user.following?(current_user) || current_user.not_blocking?(@user)) || current_user == @user%>
+ 	<%if (@user.following?(current_user) || !current_user.blocking?(@user)) || current_user == @user%>
   <h1> My Posts </h1>
 
  		<ol class="posts">

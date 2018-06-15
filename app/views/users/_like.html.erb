@@ -1,2 +1,2 @@
 <%flag = flag%>
-<%=link_to image_tag('up.jpg', width: 30, height: 25), up_post_path(@current_post, locals: {flag: flag}), method: :post%>  
+<%=link_to image_tag('up.jpg', width: 30, height: 25), up_post_path(@current_post, flag: flag), remote: true, method: :post%>   

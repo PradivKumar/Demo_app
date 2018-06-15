@@ -22,33 +22,39 @@ class PostsController < ApplicationController
 	def up
 		@post = Post.find(params[:id])
 		@post.upvote_from current_user
-		if params[:flag] == 1
-		redirect_to index_path
-	elsif  params[:flag] == 0
-		redirect_to post_path
-	end
+		respond_to do |format|
+  format.js {render inline: "location.reload();" }
+end
+	
+		
+	#end
 	end
 
 	def down
 		@post = Post.find(params[:id])
 		@post.downvote_from current_user
-		if params[:flag] == 1
-		redirect_to index_path
-	elsif  params[:flag] == 0
-		redirect_to post_path
-	end
+		respond_to do |format|
+  format.js {render inline: "location.reload();" }
+end
 		
 	end
 
-	def undo
+	def undoup
 		@post = Post.find(params[:id])
 		@vote = @post.votes_for.find_by(voter_id: current_user.id)
 		@vote.destroy unless @vote.nil?
-		if params[:flag] == 1
-		redirect_to index_path
-	elsif  params[:flag] == 0
-		redirect_to post_path
+		respond_to do |format|
+  format.js {render inline: "location.reload();" }
+end
 	end
+
+	def undodown
+		@post = Post.find(params[:id])
+		@vote = @post.votes_for.find_by(voter_id: current_user.id)
+		@vote.destroy unless @vote.nil?
+		respond_to do |format|
+  format.js {render inline: "location.reload();" }
+end
 	end
 
 	private

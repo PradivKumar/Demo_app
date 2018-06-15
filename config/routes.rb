@@ -11,7 +11,7 @@ resources :users
 resources :posts, only: [:create, :destroy]
 resources :users do
 	member do
-		get :following, :followers
+		get :following, :followers, :blocked
 		get :liked, :disliked
 	end
 end
@@ -20,7 +20,7 @@ resources :posts do
 	member do
 		
 		post :up, :down
-		delete :undo
+		delete :undoup, :undodown
 	end
 end
 

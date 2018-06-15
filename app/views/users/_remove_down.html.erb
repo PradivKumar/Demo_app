@@ -1,2 +1,2 @@
 <%flag = flag%>
-<%=link_to image_tag("down.jpg", width: 30, height: 22), undo_post_path(@current_post, locals: {flag: flag}), method: :delete%>
+<%=link_to image_tag("down.jpg", width: 30, height: 22), undodown_post_path(@current_post, flag: flag), remote: true, method: :delete%>

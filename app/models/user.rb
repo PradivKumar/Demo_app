@@ -32,18 +32,22 @@ class User < ApplicationRecord
     following.delete(other_user)
   end
 
+
   def following?(other_user)
-    following.include?other_user && Relationship.where(followed: other_user, block: 2).empty? #&& Relationship.where(followed: other_user, block: 2).empty?
+    following.include?other_user #&& Relationship.where(followed: other_user, block: 2).empty? #&& Relationship.where(followed: other_user, block: 2).empty?
   end
      
-  def not_blocking?(other_user)
-    Relationship.where(followed: other_user, block: 1).empty? && Relationship.where(followed: other_user, block: 2).empty?
+  def blocking?(other_user)
+    Relationship.where(followed: other_user, block: 1).present? || Relationship.where(followed: other_user, block: 2).present?
   end
 
-  def not_blocked?(other_user)
-      Relationship.where(followed: other_user, block: 2).empty?
+  def blocked?(other_user)
+      Relationship.where(followed: other_user, block: 2).present?
   end
 
+    def block?(other_user)
+      Relationship.where(followed: other_user, block: 1).present?
+  end
 
   def remember
   	self.remember_token = User.newtoken

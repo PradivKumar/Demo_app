@@ -80,6 +80,15 @@ end
     render 'fol_show'
   end
 
+  def blocked
+  	@title = "Blocked users"
+    @user  = User.find(params[:id])
+    @temp = (@user.active_relationships.where(block: 1) || @user.active_relationships.where(block: 2)).paginate(page: params[:page])
+   # @users = @block.paginate(page: params[:page])
+   	
+    render 'fol_show'
+  end
+
 	def notification
 		@users = current_user.following.where(dob: Date.current) 
 	end

@@ -3,18 +3,18 @@
 	<div id="like_form">
 		<%#if @current_post.not_liked?(current_user)%>
 		<%if @current_post.votes_for.where(voter_id: current_user.id, vote_flag: 1).empty?%>
-			<%=render 'users/like', locals: {flag: flag} %>
+			<%=render 'users/like', flag: flag %>
 		<%else%>
 			<%#provide(:icon,"up.jpg")%>
-			<%=render 'users/remove_up', locals: {flag: flag}%>
+			<%=render 'users/remove_up', flag: flag%>
 		<%end%>		
 			<%=@current_post.get_upvotes.size%> 
 
 		<%if @current_post.votes_for.where(voter_id: current_user.id, vote_flag: 0).empty?%>
-			<%=render 'users/unlike', locals: {flag: flag}%>
+			<%=render 'users/unlike', flag: flag%>
 		<%else%>	
 		<%#provide(:icon,"down.jpg")%>
-			<%=render 'users/remove_down', locals: {flag: flag}%>
+			<%=render 'users/remove_down', flag: flag%>
 		<%end%>	
 			<%=@current_post.get_downvotes.size%>
 		<%#end%>
