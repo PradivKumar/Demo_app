@@ -9,9 +9,11 @@ example:
   name: Example user
   mob: 8945612354
   password_digest: <%= User.digest('password') %>
+  dob: 2018-06-13
   admin: true
 
 pradiv:
   name: Pradiv
   mob: 8056180462
+  dob: 2018-06-13
   password_digest: <%= User.digest('password')%>
