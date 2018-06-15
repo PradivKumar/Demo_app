@@ -1,0 +1,2 @@
+$("#like_form").html("<%= escape_javascript(render('users/remove_down')) %>");
+$("#downcount").html('<%= @current_post.get_downvotes.size %>');

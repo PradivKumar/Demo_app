@@ -1,0 +1,4 @@
+
+$("#like_form").html("<%= escape_javascript(render('users/remove_up')) %>");
+
+$("#upcount").html('<%= @current_post.get_upvotes.size %>');

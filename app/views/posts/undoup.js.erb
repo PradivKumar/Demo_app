@@ -1,0 +1,2 @@
+$("#like_form").html("<%= escape_javascript(render('users/like')) %>");
+$("#upcount").html('<%= @current_post.get_upvotes.size %>');
