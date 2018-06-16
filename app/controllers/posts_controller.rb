@@ -6,17 +6,36 @@ class PostsController < ApplicationController
 		@post = current_user.posts.build(post_params)
 		if @post.save
 			flash[:success] = "Successfully posted!"
-			redirect_to root_url
+			#redirect_to root_url
+			respond_to do |format|
+  			format.js {render inline: "location.reload();" }
+			end
 		else
 			@feed_items = []
 			render 'users/index'
 		end
 	end
 
+	def edit
+		@post= current_user.posts.find(params[:id])
+	end
+
+	def update
+		@post = current_user.posts.find(params[:id])
+		if @post.update_attributes(post_params)
+			flash[:success] = "Updated Successfully"
+			redirect_to current_user
+		else
+			render 'edit'
+		end
+	end
+
 	def destroy
 		@post.destroy
 		flash[:success] = "Post deleted!"
-		redirect_to current_user
+		respond_to do |format|
+  		format.js {render inline: "location.reload();" }
+		end
 	end
 
 	def up
@@ -55,7 +74,7 @@ end
 end
 	end
 
-	private
+private
 	def post_params
 		params.require(:post).permit(:content, :privacy, :picture)
 	end

@@ -86,4 +86,22 @@ def noti
 
 end
 
+def blocked_users
+    blocked_ids = "SELECT followed_id FROM relationships
+                     WHERE  (follower_id = :user_id AND (block = '1' OR block = '2'))"
+    User.where("(id IN (#{blocked_ids}))", user_id: id)
+end
+
+def following_users
+  following_ids = "SELECT followed_id FROM relationships
+                     WHERE  (follower_id = :user_id AND block = '0')"
+   User.where("(id IN (#{following_ids}))", user_id: id)                   
+end
+
+def follower_users
+  follower_ids = "SELECT follower_id FROM relationships
+                     WHERE  (followed_id = :user_id AND block = '0')"
+User.where("(id IN (#{follower_ids}))", user_id: id)              
+end
+
 end

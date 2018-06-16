@@ -1,12 +1,23 @@
 
 <%@user ||= current_user%>
-<div class="col-md-4">
+<div class="fol">
+<div class="col-md-3">
 <%=link_to "Following", following_user_path(@user) %><br>
-<%=@user.following.count %> 
+<%=@user.following_users.count %> 
 </div>
-<div class="cd-md-8">	
+<div class="col-md-3">	
 	<%=link_to "Followers", followers_user_path(@user) %><br>
 	<div id="fol_count">
-<%=@user.followers.count%>
+<%=@user.follower_users.count%>
 </div>
+</div>
+</div>
+<div class ="blok">
+<div class="col-md-6">
+	<%=link_to "Blocked Users", blocked_user_path(@user) %><br> 
+	<%#=@user.blocked.count%>
+	<%=@user.blocked_users.count%>
+</div>
+</div>
+
 <br><br> 

@@ -7,7 +7,7 @@
 <div><%=image_tag post.picture.url if post.picture? %></div>
 
 <%if current_user == post.user%>
-<%=link_to "Delete", post, method: :delete, data: {confirm: "Sure?"}%>
+<%=link_to "Edit", edit_post_path(post)%> | <%=link_to "Delete", post, method: :delete, data: {confirm: "Sure?"}%>
 <%end%>	
 <div class="likes"> <%=render 'shared/like_form', flag: 0 %></div>
 
