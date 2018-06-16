@@ -1,8 +1,8 @@
 <%unless current_user == @user%>
 	<div id="follow_form">
-		<%if current_user.following?(@user) && current_user.block?(@user)%>
+		<%if current_user.following?(@user) && current_user.block?(current_user, @user)%>
 		<%=render 'users/unfollow_update', block: 2%>
-		<%elsif current_user.following?(@user) && !current_user.blocked?(@user)%>
+		<%elsif current_user.following?(@user) && !current_user.blocked?(current_user, @user)%>
 		<%=render 'users/unfollow'%>
 	
 		<%else%>

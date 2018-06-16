@@ -4,18 +4,18 @@
 		<%#if @current_post.not_liked?(current_user)%>
 		
 		<%if @current_post.votes_for.where(voter_id: current_user.id, vote_flag: 1).empty?%>
-			<div class="like"><%=render 'users/like' %></div>
+			<%=render 'users/like' %>
 		<%else%>
 			<%#provide(:icon,"up.jpg")%>
-			<div class="like"><%=render 'users/remove_up'%></div>
+			<%=render 'users/remove_up'%>
 		<%end%>		
 			<div id="upcount"><%=@current_post.get_upvotes.size%> </div>
 
 		<%if @current_post.votes_for.where(voter_id: current_user.id, vote_flag: 0).empty?%>
-			<div class="unlike"><%=render 'users/unlike'%></div>
+			<%=render 'users/unlike'%>
 		<%else%>	
 		<%#provide(:icon,"down.jpg")%>
-			<div class="unlike"><%=render 'users/remove_down'%></div>
+			<%=render 'users/remove_down'%>
 		<%end%>	
 			<div id="downcount"><%=@current_post.get_downvotes.size%></div>
 		<%#end%>

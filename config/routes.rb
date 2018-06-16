@@ -8,7 +8,8 @@ get '/login', to: 'sessions#new'
 post '/login', to: 'sessions#create'
 delete '/logout', to: 'sessions#destroy'
 resources :users
-resources :posts, only: [:create, :destroy]
+resources :posts
+
 resources :users do
 	member do
 		get :following, :followers, :blocked
@@ -17,8 +18,7 @@ resources :users do
 end
 
 resources :posts do
-	member do
-		
+	member do	
 		post :up, :down
 		delete :undoup, :undodown
 	end

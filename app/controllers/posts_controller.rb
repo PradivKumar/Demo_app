@@ -20,7 +20,6 @@ class PostsController < ApplicationController
 	end
 
 	def up
-
 		@post = Post.find(params[:id])
 		@post.upvote_from current_user
 		respond_to do |format|
@@ -32,7 +31,7 @@ end
 	def down
 		@post = Post.find(params[:id])
 		@post.downvote_from current_user
-	respond_to do |format|
+		respond_to do |format|
   format.js {render inline: "location.reload();" }
 end
 	end
@@ -54,7 +53,6 @@ end
 		respond_to do |format|
   format.js {render inline: "location.reload();" }
 end
-
 	end
 
 	private

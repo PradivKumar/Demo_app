@@ -37,16 +37,16 @@ class User < ApplicationRecord
     following.include?other_user #&& Relationship.where(followed: other_user, block: 2).empty? #&& Relationship.where(followed: other_user, block: 2).empty?
   end
      
-  def blocking?(other_user)
-    Relationship.where(followed: other_user, block: 1).present? || Relationship.where(followed: other_user, block: 2).present?
+  def blocking?(user, other_user)
+    user.active_relationships.where(followed: other_user, block: 1).present? || user.active_relationships.where(followed: other_user, block: 2).present?
   end
 
-  def blocked?(other_user)
-      Relationship.where(followed: other_user, block: 2).present?
+  def blocked?(user, other_user)
+      user.active_relationships.where(followed: other_user, block: 2).present?
   end
 
-    def block?(other_user)
-      Relationship.where(followed: other_user, block: 1).present?
+    def block?(user, other_user)
+      user.active_relationships.where(followed: other_user, block: 1).present?
   end
 
   def remember
@@ -75,4 +75,15 @@ def feed
                      OR user_id = :user_id) OR ((privacy = 'Public') AND user_id NOT IN (#{blocked_ids})))", user_id: id)
 
 end
+
+def noti
+  blocked_ids = "SELECT followed_id FROM relationships
+                     WHERE  (follower_id = :user_id AND (block = '1' OR block = '2'))"
+   following_ids = "SELECT followed_id FROM relationships
+                     WHERE  (follower_id = :user_id AND block = '0')"
+
+    User.where("(id IN (#{following_ids}) AND id NOT IN (#{blocked_ids}))", user_id: id)                 
+
+end
+
 end

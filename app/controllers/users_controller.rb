@@ -90,7 +90,8 @@ end
   end
 
 	def notification
-		@users = current_user.following.where(dob: Date.current) 
+	#	@users = current_user.following.where(dob: Date.current) 
+	@users = current_user.noti
 	end
 
 
