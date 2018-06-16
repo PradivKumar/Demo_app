@@ -6,10 +6,7 @@ class PostsController < ApplicationController
 		@post = current_user.posts.build(post_params)
 		if @post.save
 			flash[:success] = "Successfully posted!"
-			#redirect_to root_url
-			respond_to do |format|
-  			format.js {render inline: "location.reload();" }
-			end
+			redirect_to root_url
 		else
 			@feed_items = []
 			render 'users/index'
@@ -33,9 +30,7 @@ class PostsController < ApplicationController
 	def destroy
 		@post.destroy
 		flash[:success] = "Post deleted!"
-		respond_to do |format|
-  		format.js {render inline: "location.reload();" }
-		end
+		redirect_to current_user
 	end
 
 	def up
