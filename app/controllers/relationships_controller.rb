@@ -8,9 +8,7 @@ class RelationshipsController < ApplicationController
 		
 		if @rel.present? && @rel.block == 2
 			flash[:danger] = "Unblock!"
-			respond_to do |format|
-  format.js {render inline: "location.reload();" }
-end
+			redirect_to @user
 		else
 			current_user.follow(@user)
 			@rel = Relationship.find_by(follower: current_user, followed: @user)
