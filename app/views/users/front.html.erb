@@ -11,11 +11,11 @@
 <section class="search_result">
 <div class="col-md-5">
 <%= will_paginate %>
-<ul class="users">
+<ol class="users">
   <% @users.each do |user| %>
      <%=render user%>
   <% end %>
-</ul>
+</ol>
 <%= will_paginate %>
 </div>
 </section>
