@@ -1,7 +1,7 @@
 module ApplicationHelper
 
 	def fulltitle(opt_title='')
-		basetitle = "ROR"
+		basetitle = "Connect"
 		if opt_title.empty?
 			basetitle
 		else
