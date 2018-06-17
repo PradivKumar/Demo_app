@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 	def index
 if logged_in?
 	
-    @feed_items = current_user.feed.paginate(page: params[:page], per_page: 3)
+    @feed_items = current_user.feed.paginate(page: params[:page])
 	@post = current_user.posts.build 
 	
 	#@current_post = Post.find(params[:id])
@@ -45,7 +45,7 @@ end
 	end
 	def show
 		@user = User.find(params[:id]) 
-		@posts = @user.posts.paginate(page: params[:page], per_page: 3)
+		@posts = @user.posts.paginate(page: params[:page])
 		@post = current_user.posts.build 
 			@follow = current_user.followers
 

@@ -1,6 +1,7 @@
+<%@current_post = post%>
+<%if @current_post.privacy != "Private"%>
 <li>
 <%#=link_to gravatar_for(post.user), post.user%>
-<%@current_post = post%>
 <%=link_to post.user.name, post.user%> |<%= render 'shared/privacy_icon'%><br>
 <div class="post_content"><%=post.content%></div> | 
 <div class="post_time">Posted <%=time_ago_in_words(post.created_at)%> ago</div> 
@@ -12,3 +13,4 @@
 <div class="likes"> <%=render 'shared/like_form', flag: 0 %></div>
 
 </li> 
+<%end%>
