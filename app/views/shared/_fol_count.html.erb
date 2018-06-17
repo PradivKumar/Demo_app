@@ -12,6 +12,7 @@
 </div>
 </div>
 </div>
+<%if @user == current_user%>
 <div class ="blok">
 <div class="col-md-6">
 	<%=link_to "Blocked Users", blocked_user_path(@user) %><br> 
@@ -19,5 +20,5 @@
 	<%=@user.blocked_users.count%>
 </div>
 </div>
-
+<%end%>
 <br><br> 

@@ -10,9 +10,9 @@
 		<%=f.label :dob%>
 		<%=f.date_field :dob, class: 'form_control'%>
 		<%=f.label :password%>
-		<%=f.password_field :password, class: 'form_control'%>
+		<%=f.password_field :password, :placeholder => 'Should be atleast 6 characters', class: 'form_control'%>
 		<%=f.label :password_confirmation, "Confirmation"%>
-		<%=f.password_field :password_confirmation, class: 'form_control'%>
+		<%=f.password_field :password_confirmation, :placeholder => 'Should be atleast 6 characters', class: 'form_control'%>
 		<%= f.submit yield(:button_text), class: "btn btn-primary" %>
 
 	<%end%>
