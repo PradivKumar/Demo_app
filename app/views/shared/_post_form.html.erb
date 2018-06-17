@@ -7,7 +7,7 @@
 	<%=f.label :privacy%>
 	<%=f.select :privacy, [['Following', "Following"], ['Public', "Public"], ['Private', "Private"]]%>
 	<%#= f.select(:privacy, Post::privacy_opt) %>
-	<%=f.label :picture, 'Add pic'%>
+	<%=f.label :picture, 'Add a picture'%>
 	<%=f.file_field :picture, accept: 'image/jpeg,image/gif,image/png,image/jpg'%><br>
 	<%=f.submit "Post", class: "btn btn-primary"%>
 <%end%>
