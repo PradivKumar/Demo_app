@@ -6,7 +6,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   # end
 
 def setup
-	@basetitle = "ROR"
+	@basetitle = Connect
 	@user = users(:example)
 	@second_user = users(:pradiv)
 end
@@ -14,7 +14,7 @@ end
   test "should get index" do
   	get index_path
   	assert_response :success
-  	assert_select "title",  "Index | #{@basetitle}"
+  	assert_select "title",  "Home | #{@basetitle}"
   end
   test "redirect when not logged in" do
   	get edit_user_path(@user)
