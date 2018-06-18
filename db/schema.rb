@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2018_06_18_075405) do
     t.boolean "admin", default: false
     t.string "remember_digest"
     t.date "dob"
+    t.index ["dob"], name: "index_users_on_dob"
   end
 
   create_table "votes", force: :cascade do |t|

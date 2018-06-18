@@ -30,11 +30,11 @@
  	<%if (@user.following?(current_user) && !current_user.blocking?(current_user, @user)) || current_user == @user%>
 
 
- 		<ol class="posts">
+ 		<ul class="posts">
         <h1> My Posts </h1>
  			<%=render @posts %>
       <%=will_paginate @posts%>
- 		</ol>
+ 		</ul>
  		
  	<%end%>
   <%end%>

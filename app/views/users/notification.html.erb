@@ -12,7 +12,7 @@
 
 <%if @users.any?%>
 <section class="bday">
-<div class="col-md-7">
+
 	<h3>
 	<%if @users.count == 1%>
 		<%@users.each do |u|%>
@@ -30,7 +30,7 @@
 	<%end%>
 	<br><%= link_to "Send wish!", index_path%>
 </h3>
-</div>
+
 </section>
 <%end%>
 <%if @users.empty? && current_user.dob != Date.current%>

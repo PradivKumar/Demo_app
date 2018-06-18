@@ -82,6 +82,10 @@ background-color: #555;
     transform: scale(1.2); 
 }
 
+.show_comments{
+  margin-top: 5px;
+}
+
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -98,10 +102,16 @@ background-color: #555;
 }
 
 input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
+ 
   width: 100%;
   margin-bottom: 15px;
 @include box_sizing;
+}
+
+textarea {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 }
 
 input {
@@ -116,6 +126,23 @@ input {
   }
 }
 
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: #777;
+}
+
 .field_with_errors {
   @extend .has-error;
   .form-control {
@@ -124,7 +151,7 @@ input {
 }
 
 .viewpost{
-margin-left: 57px;
+margin-left: 55px;
 
 }
 
@@ -148,7 +175,7 @@ margin-left: 150px;
 .posts {
   margin-top: 50px;
   margin-left: 70px;
-  list-style: none;
+  
   padding: 0;
   li {
     padding: 10px 0;

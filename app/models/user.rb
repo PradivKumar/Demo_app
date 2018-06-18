@@ -82,9 +82,12 @@ def noti
                      WHERE  (follower_id = :user_id AND (block = '1' OR block = '2'))"
    following_ids = "SELECT followed_id FROM relationships
                      WHERE  (follower_id = :user_id AND block = '0')"
-    date = Time.now.strftime("%Y-%m-%d")
 
-    User.where("(id IN (#{following_ids}) AND id NOT IN (#{blocked_ids})) AND dob = (#{date})", user_id: id)                 
+    #date = Time.now.strftime("%Y-%m-%d")
+
+tdate = Date.today
+    
+    User.where("(id IN (#{following_ids}) AND id NOT IN (#{blocked_ids})) AND (dob = :date)", user_id: id, date: tdate)                 
 
 end
 
