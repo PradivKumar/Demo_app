@@ -1,5 +1,5 @@
 <%@current_post = post%>
-<%if @current_post.privacy != "Private"%>
+<%unless @current_post.privacy == "Private" && current_user != post.user%>
 <li>
 <%#=link_to gravatar_for(post.user), post.user%>
 <%=link_to post.user.name, post.user%> |<%= render 'shared/privacy_icon'%><br>
