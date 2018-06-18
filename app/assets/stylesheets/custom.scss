@@ -4,15 +4,23 @@
 
 body {
   padding-top: 60px;
+
 }
 
 section {
   overflow: auto;
 }
 
+.login{
+  margin-top: 100px;
+}
 
 #fol, #blok{
   display: inline;
+}
+
+.com_box, .com_button{
+  display: inline
 }
 
 textarea {
@@ -48,13 +56,32 @@ textarea {
   padding-top: 20px;  
 }
 
-#logo{
-	float: left;
-	font-weight: bold;
-	font-size: 1.7em;
-	margin-left: 10px;
-	color: #fff;
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
 }
+
+#logo:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+#nav_elements {
+    transition: transform .2s; 
+}
+
+#nav_elements:hover {
+background-color: #555;
+    color: white;
+    transform: scale(1.2); 
+}
+
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -64,6 +91,10 @@ textarea {
 
 .row{
 	margin-top: 20px;
+}
+
+.block_form, .follow_form{
+  display: inline;
 }
 
 input, textarea, select, .uneditable-input {
@@ -92,13 +123,31 @@ input {
   }
 }
 
+.viewpost{
+margin-left: 57px;
+
+}
+
+.search{
+  margin-top: 60px;
+}
 
 .users{
+margin-top: 70px;
+margin-left: 150px;
   list-style: none;
   padding: 0;
 }
 
+
+.main{
+  margin-left: 40px;  
+}
+
+
 .posts {
+  margin-top: 50px;
+  margin-left: 70px;
   list-style: none;
   padding: 0;
   li {

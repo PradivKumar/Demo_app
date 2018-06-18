@@ -5,10 +5,11 @@ class UsersController < ApplicationController
 	def index
 if logged_in?
 	
-    @feed_items = current_user.feed.paginate(page: params[:page])
+    @feed_items = current_user.feed.paginate(page: params[:page], per_page: 10)
 	@post = current_user.posts.build 
-	
 	#@current_post = Post.find(params[:id])
+	#@comments = @current_post.comments
+	
 end
 	
 	end
@@ -16,9 +17,9 @@ end
 
 	def front
 		if params[:name]
-		@users = User.where('name LIKE ?', "%#{params[:name]}%").paginate(page: params[:page], per_page: 5) 
+		@users = User.where('name LIKE ?', "%#{params[:name]}%").paginate(page: params[:page], per_page: 10) 
 	else
-		@users = User.paginate(page: params[:page], per_page: 5)
+		@users = User.paginate(page: params[:page], per_page: 10)
 	end
 		#	@users = User.paginate(page: params[:page], per_page: 2)
 	end
@@ -45,7 +46,7 @@ end
 	end
 	def show
 		@user = User.find(params[:id]) 
-		@posts = @user.posts.paginate(page: params[:page])
+		@posts = @user.posts.paginate(page: params[:page], per_page: 10)
 		@post = current_user.posts.build 
 			@follow = current_user.followers
 
@@ -55,14 +56,14 @@ end
 	def liked
 		@title = "Liked Posts"
 		@user = User.find(params[:id]) 
-		@posts = @user.votes.where(vote_flag: 1).paginate(page: params[:page], per_page: 3)
+		@posts = @user.votes.where(vote_flag: 1).paginate(page: params[:page], per_page: 10)
 		render 'posts_show'
 	end
 
 	def disliked
 		@title = "Disliked Posts"
 		@user = User.find(params[:id]) 
-		@posts = @user.votes.where(vote_flag: 0).paginate(page: params[:page], per_page: 3)
+		@posts = @user.votes.where(vote_flag: 0).paginate(page: params[:page], per_page: 10)
 		render 'posts_show'
 	end
 

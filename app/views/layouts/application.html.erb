@@ -19,22 +19,22 @@
          <%= link_to "Connect", index_path, id: "logo"%>
         <nav>
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Home", index_path %></li>
+            <li><%= link_to "Home", index_path, id: "nav_elements"%></li>
             
              <% if logged_in? %>
               <li>
-                <%= link_to "Users", front_path %> </li>
+                <%= link_to "Users", front_path, id: "nav_elements" %> </li>
               <li>
-                <%=link_to "Notifications", notification_path%></li>
+                <%=link_to "Notifications", notification_path, id: "nav_elements"%></li>
                 
-                <li><%=link_to "My Posts", user_path(current_user)%></li>
-                <li><%= link_to "Edit", edit_user_path(current_user) %> </li>
-                <li><%= link_to "Log out", logout_path, method: :delete %>
+                <li><%=link_to "My Posts", user_path(current_user), id: "nav_elements"%></li>
+                <li><%= link_to "Edit", edit_user_path(current_user), id: "nav_elements" %> </li>
+                <li><%= link_to "Log out", logout_path, id: "nav_elements", method: :delete %>
               </li>
             </ul>
           </li>
         <% else %>
-          <li><%= link_to "Log in", login_path %></li>
+          <li><%= link_to "Log in", login_path, id: "nav_elements" %></li>
         <% end %>
           </ul>
         </nav>

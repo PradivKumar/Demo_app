@@ -1,22 +1,28 @@
 <%provide(:title, "Users")%>
 <br><br>
-<h1>Users</h1>
+
 
 <div class="row">
 <aside class="col-md-4">
+<div class="search">	
+		<h1>Users</h1><br>
 <section>
+
 <%=render 'shared/search_form'%>
 </section>
+</div>
 </aside>
 <section class="search_result">
-<div class="col-md-5">
-<%= will_paginate %>
+<div class="col-md-8">
 <ol class="users">
+<%= will_paginate %>
+
   <% @users.each do |user| %>
      <%=render user%>
   <% end %>
-</ol>
+
 <%= will_paginate %>
+</ol>
 </div>
 </section>
 </div>

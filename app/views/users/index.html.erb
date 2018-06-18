@@ -13,14 +13,17 @@
     </section>
 		<section class="post_form"> 
 			<%=render 'shared/fol_count'%> <br><br>
-			<%=render 'shared/post_form'%><br>
-			<h2>View Posts</h2><br>
+			<%=render 'shared/post_form'%><br><br>
+			
+		</section><br>
+		<div class="viewpost">
 			<%=render 'shared/view_posts'%>
-		</section>
+	</div>
 	</aside>
-<h1>Posts Feed</h1>
-<div class="col-md-8">
+
+<div class="col-md-7">
 	<ol class = "posts">
+<h1>Posts Feed</h1>
 		<%#=render 'shared/filter_form'%>
 		<%=render 'shared/post_feed'%>
 		

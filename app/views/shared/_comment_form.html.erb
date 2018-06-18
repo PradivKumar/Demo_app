@@ -1,0 +1,9 @@
+
+<%=form_tag comments_path(current_user.comments.build), method: :post do %>
+
+<div class = "col-md-5"><div class="com_box"><%=text_area_tag :content, nil, :placeholder => 'Leave a Comment!'%></div></div><br>
+<div><%=hidden_field_tag :post_id, @current_post.id%></div>
+<div class = "col-md-2"><div class="com_button"><%= button_tag :submit do %>
+    <i class='material-icons'>send</i>
+<% end %></div></div>
+<%end%>

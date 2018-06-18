@@ -1,8 +1,9 @@
  <div class="col-md-8">
-    <h3><%=@title%> (<%= @posts.count%>)</h3>
+    
 
     <% if @posts.any? %>
       <ul class="posts">
+        <h3><%=@title%> (<%= @posts.count%>)</h3>
    	<%@posts.each do |p|%> <li>
       <%@current_post = Post.find(p.votable_id)  %>
       		<%post = Post.find(p.votable_id)%>
@@ -15,8 +16,8 @@
 <div class="likes">  <%=render 'shared/like_form'%></div>
       	<%end%>
         </li>
-
+<%= will_paginate @posts%>
       </ul>
-      <%= will_paginate @posts%>
+      
     <% end %>
   </div>

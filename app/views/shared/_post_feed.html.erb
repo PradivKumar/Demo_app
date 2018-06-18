@@ -12,7 +12,13 @@
 	<div class="post_time">Posted <%=time_ago_in_words(fi.created_at)%> ago</div>
 	<div><%=image_tag fi.picture.url if fi.picture? %></div>
 	<div class="likes">
-	<%=render 'shared/like_form', flag: 0%></div>
+	<%=render 'shared/like_form', flag: 0%></div><br>
+	<div>
+		<%=render 'shared/comment_form'%>
+	</div><br><br>
+	<div class= "show_comments">
+		<%=render 'shared/show_comments'%>
+	</div>
 	<%#=render 'users/like_count'%>
 	 <%end%>
 </li>

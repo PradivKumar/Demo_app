@@ -17,6 +17,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'mini_racer', platforms: :ruby
 
 # Use CoffeeScript for .coffee assets and views
+
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
@@ -44,6 +45,7 @@ gem 'bootstrap-will_paginate', '1.0.0'
 gem 'carrierwave',             '1.2.2'
 gem 'mini_magick',             '4.7.0'
 gem 'acts_as_votable', '~> 0.11.1'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

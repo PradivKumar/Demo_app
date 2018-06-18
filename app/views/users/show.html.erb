@@ -15,24 +15,30 @@
     </section>
    
   </aside>
+  <br><br>
+  
  <div class= "col-md-8">
-  <div class ="followform">
+  <div class="main">
+  <div class="col-md-6"><div class ="followform">
  	<%=render 'follow_form' if logged_in?%>
- </div>
+ </div></div>
+ <div class="col-md-6">
  <div class="blockform">
-    <%=render 'block_form' if logged_in?%>
- </div>
+    <%=render 'block_form' if logged_in?%></div>
+ </div></div>
  	<%if @user.posts.any?%>
  	<%if (@user.following?(current_user) && !current_user.blocking?(current_user, @user)) || current_user == @user%>
-  <h1> My Posts </h1>
+
 
  		<ol class="posts">
+        <h1> My Posts </h1>
  			<%=render @posts %>
-      
+      <%=will_paginate @posts%>
  		</ol>
- 		<%=will_paginate @posts%>
+ 		
  	<%end%>
   <%end%>
 </div>
+
 </div>
 </html>
