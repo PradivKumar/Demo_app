@@ -23,22 +23,26 @@
 
 <div class="col-md-7">
 	<ul class = "posts">
-<h1>Posts Feed</h1>
+<h1>Feed</h1>
 		<%#=render 'shared/filter_form'%>
 		<%=render 'shared/post_feed'%>
 		
 	</ul>
 </div>
+
+
 </div>
 
 <%else%>
-<body>
+<div class= "connect">
+<body class="bg">
 <div class="center jumbotron">
 <h1>Welcome to CONNECT!</h1>
 
 <%= link_to "Sign up", signup_path, class: "btn btn-lg btn-primary"%>
 </div>
 </body>
+</div>
 <%end%>
 <br><br>
 

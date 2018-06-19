@@ -1,17 +1,32 @@
+	
 <html>
+<head>
+	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	</head>
+<body>
+	<div class="login">
+	<h1><center>Login</center></h1>
 
-<div class="login">
-<div class = "row">
-<div class="col-md-6 col-md-offset-3">
-		<h1><center>Login</center></h1>
+<div class="form-1">
+
+
 	<%=form_for(:session, url: login_path) do |f|%>
-		<%=f.label :mob%>
-		<%=f.text_field :mob, class: 'form-control'%>
-		<%=f.label :password%>
-		<%=f.password_field :password, class: 'form-control'%>
-		<%=f.submit "Login", class: "btn btn-primary"%>
+		<p class="field">
+		<%#=f.label :mob%>
+		<%=f.text_field :mob, placeholder: "Mobile number", class: 'form-control'%>
+			<i class="material-icons">call</i>
+		</p>
+		<p class="field">
+		<%#=f.label :password%>
+		<%=f.password_field :password, placeholder: "Password", class: 'form-control'%>
+	<i class="material-icons">vpn_key</i></p>
+		<p class="submit">
+		<%= button_tag :submit do %>
+    <i class='material-icons', style="font-size: 18px">send</i>
+<% end %></p>
 	<%end%>
+
 </div>
 </div>
-</div>
+</body>
 </html>
