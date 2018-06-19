@@ -7,6 +7,10 @@ get '/front', to: 'users#front'
 get '/login', to: 'sessions#new'
 post '/login', to: 'sessions#create'
 delete '/logout', to: 'sessions#destroy'
+get "posts/:id/undoup", to: redirect("/")
+get "posts/:id/up", to: redirect("/")
+get "posts/:id/down", to: redirect("/")
+get "posts/:id/undodown", to: redirect("/")
 resources :users
 resources :posts
 
