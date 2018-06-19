@@ -73,7 +73,7 @@ def feed
                      WHERE  (follower_id = :user_id AND (block = '1' OR block = '2'))"
 
     Post.where("((user_id IN (#{following_ids})
-                     OR user_id = :user_id) OR ((privacy = 'Public') AND user_id NOT IN (#{blocked_ids})))", user_id: id)
+                     AND user_id NOT IN (#{blocked_ids})) OR user_id = :user_id)", user_id: id)
 
 end
 
@@ -90,6 +90,8 @@ tdate = Date.today
     User.where("(id IN (#{following_ids}) AND id NOT IN (#{blocked_ids})) AND (dob = :date)", user_id: id, date: tdate)                 
 
 end
+
+
 
 def blocked_users
     blocked_ids = "SELECT followed_id FROM relationships

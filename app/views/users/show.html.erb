@@ -28,15 +28,19 @@
  </div></div>
  	<%if @user.posts.any?%>
  	<%if (@user.following?(current_user) && !current_user.blocking?(current_user, @user)) || current_user == @user%>
-
-
  		<ul class="posts">
         <h1> My Posts </h1>
  			<%=render @posts %>
       <%=will_paginate @posts%>
  		</ul>
- 		
  	<%end%>
+  <%if (!@user.following?(current_user) && !current_user.blocking?(current_user, @user)) %>
+    <ul class="posts">
+        <h1> My Posts </h1>
+      <%=render @public_posts %>
+      <%=will_paginate @posts%>
+    </ul>
+  <%end%>
   <%end%>
 </div>
 

@@ -47,6 +47,7 @@ end
 	def show
 		@user = User.find(params[:id]) 
 		@posts = @user.posts.paginate(page: params[:page], per_page: 10)
+		@public_posts = @user.posts.where(privacy: "Public").paginate(page: params[:page], per_page: 10)
 		@post = current_user.posts.build 
 			@follow = current_user.followers
 
