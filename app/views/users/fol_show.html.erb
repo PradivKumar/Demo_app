@@ -1,10 +1,12 @@
  <div class="col-md-8">
-    <h3><%= @title %>(<%=@users.count%>)</h3>
+
     <% if @users.any? %>
       <ul class="users follow">
+      	    <h3><%= @title %>(<%=@users.count%>)</h3>
         <%= render @users %>
+        <%= will_paginate %>
       </ul>
-      <%= will_paginate %>
+      
     <% end %>
   </div> 
 
