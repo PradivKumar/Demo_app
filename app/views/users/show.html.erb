@@ -27,7 +27,7 @@
     <%=render 'block_form' if logged_in?%></div>
  </div></div>
  	<%if @user.posts.any?%>
- 	<%if (@user.following?(current_user) && !current_user.blocking?(current_user, @user)) || current_user == @user%>
+ 	<%if (@user.following?(current_user) && !@user.blocking?(@user,current_user) && !current_user.blocking?(current_user, @user)) || current_user == @user%>
  		<ul class="posts">
         <h1> My Posts </h1>
  			<%=render @posts %>

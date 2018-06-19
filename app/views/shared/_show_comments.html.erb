@@ -4,7 +4,7 @@
 <%if @com.any?%>
 <ul>
 	<%@com.each do |c|%>
-		<%if current_user.active_relationships.where(block: 1, followed_id: c.user_id).empty? && current_user.active_relationships.where(block: 2, followed_id: c.user_id).empty?%>
+		<%if current_user.active_relationships.where(block: 0, followed_id: c.user_id).present? && current_user.active_relationships.where(block: 1, followed_id: c.user_id).empty? && current_user.active_relationships.where(block: 2, followed_id: c.user_id).empty?%>
 <li>	
 		 <%user = User.find(c.user_id)%>
 		<%=link_to user.name, user%> <br><%=c.content%><br> 
